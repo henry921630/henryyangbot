@@ -58,21 +58,7 @@ def get_response():
     print('request.json:')
     print(json.dumps(request.json, indent=4, sort_keys=True))
 
-    if 'context' in request.json:
-        context = ast.literal_eval(request.json['context'])
-        response = conversation.message(workspace_id=workspace_Support_Portal_v3,
-                                        input={'text': request.json['question']},
-                                        context=context)
-    else:
-        response = conversation.message(workspace_id=workspace_Support_Portal_v3,
-                                        input={'text': request.json['question']})
-
-    # Determine whether to send again
-    # If the context variable 'resend' is true, then input the same question with product name
-    if response['context']['Resend']:
-        response = conversation.message(workspace_id=workspace_Support_Portal_v3,
-                                        input={'text': request.json['question'] + ' ' + response['context']['product']},
-                                        context=context)
+    response = request.json
 
     return jsonify({'response': response})
 
