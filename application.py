@@ -51,7 +51,7 @@ application.add_url_rule('/', 'index', (lambda: header_text + say_hello() + inst
 application.add_url_rule('/<username>', 'hello', (lambda username: header_text + say_hello(username) + home_link + footer_text))
 
 
-@application.route('/tomo-api/v0.1', methods=['POST'])
+@application.route('/v0.1', methods=['POST'])
 def get_response():
     print(request)
     if not request.json:
