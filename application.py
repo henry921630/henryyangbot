@@ -2,15 +2,13 @@ from flask import Flask, jsonify
 from flask import request
 from flask import abort
 from flask import Response
-from watson_developer_cloud import ConversationV1
 import json
 import ast
 import pprint
 import re
 import requests
 from urllib.parse import unquote_plus
-from simple_salesforce import Salesforce
-import telepot
+# import telepot
 import time
 
 stopwatch = {'01 init': time.clock()}
