@@ -8,7 +8,7 @@ import pprint
 import re
 import requests
 from urllib.parse import unquote_plus
-# import telepot
+import telepot
 import time
 
 stopwatch = {'01 init': time.clock()}
