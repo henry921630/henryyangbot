@@ -71,7 +71,7 @@ def get_response():
     print(json.dumps(request.json, indent=4, sort_keys=True))
 
     response = request.json
-    response['answer'] = 'a' + request.json['question']
+    response['answer'] = '嗯，我聽到你說「{}」了'.format(request.json['question'])
     return jsonify({'response': response})
 
 
