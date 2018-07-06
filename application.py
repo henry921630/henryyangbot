@@ -52,6 +52,18 @@ application.add_url_rule('/<username>', 'hello', (lambda username: header_text +
 @application.route('/v0.1', methods=['POST'])
 def get_response():
     print(request)
+
+    if not request.json:
+        try:
+            bot.sendMessage(271383530, u"Tomo API進來了一筆不是json的request: \n" + str(request))
+        except:
+            pass
+        abort(400)
+    try:
+        bot.sendMessage(271383530, "Tomo API進來了一筆request:")
+        bot.sendMessage(271383530, pprint.pformat(request.json, indent=2))
+    except:
+        pass
     if not request.json:
         abort(400)
 
