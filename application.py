@@ -25,7 +25,7 @@ stopwatch['02 end_of_setting'] = time.clock()
 
 # print a nice greeting.
 def say_hello(username="World"):
-    return '<p>Hello %s!</p>\n' % username
+    return '<p>Hello %s!</p>\n' % username  
 
 
 # some bits of text for the page.
@@ -55,12 +55,12 @@ def get_response():
 
     if not request.json:
         try:
-            bot.sendMessage(271383530, u"Tomo API進來了一筆不是json的request: \n" + str(request))
+            bot.sendMessage(271383530, u"henryyangbot 進來了一筆不是json的request: \n" + str(request))
         except:
             pass
         abort(400)
     try:
-        bot.sendMessage(271383530, "Tomo API進來了一筆request:")
+        bot.sendMessage(271383530, "henryyangbot 進來了一筆request:")
         bot.sendMessage(271383530, pprint.pformat(request.json, indent=2))
     except:
         pass
@@ -71,7 +71,7 @@ def get_response():
     print(json.dumps(request.json, indent=4, sort_keys=True))
 
     response = request.json
-
+    response['answer'] = 'a' + request.json['question']
     return jsonify({'response': response})
 
 
